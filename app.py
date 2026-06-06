@@ -428,6 +428,23 @@ def kpi(icon, label, value, delta=""):
             f'<div class="kpi-delta">{delta}</div>'
             f'</div>')
 
+def dashboard_footer():
+    st.markdown("<br>", unsafe_allow_html=True)
+    st.markdown(f"""
+    <div style="background:linear-gradient(135deg,{BRAND_DARK} 0%,{BRAND} 100%);
+                border-radius:14px;padding:18px 28px;text-align:center;
+                box-shadow:0 4px 22px rgba(45,59,224,.2);">
+        <div style="width:54px;height:54px;background:#fff;border-radius:9px;
+                    display:flex;align-items:center;justify-content:center;
+                    margin:0 auto 10px;box-shadow:0 5px 15px rgba(0,0,0,.14);">
+            {logo(40)}
+        </div>
+        <div style="font-size:.67rem;color:rgba(255,255,255,.50);letter-spacing:.10em;text-transform:uppercase;">
+            Employee Attrition Intelligence Report · Week #1 Task · 2026
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
 def answer_card(q, title, stat, insight_text, action_text, points=None, tone="urg"):
     pts = f"{points} pts" if points else "Insight"
     return f"""
@@ -568,7 +585,7 @@ with st.sidebar:
 st.markdown(f"""
 <div class="hero">
     <div class="hero-pill">
-        {logo(16)}&nbsp;&nbsp;HR Attrition Intelligence
+        HR Attrition Intelligence
     </div>
     <div class="hero-kicker">Kayfa Analytics · Week #1 Task</div>
     <div class="hero-title">Employee Attrition<br>Intelligence Report</div>
@@ -751,6 +768,8 @@ with t_ans:
         fig.update_layout(height=320, yaxis=dict(autorange="reversed"))
         cw(fig, "qa_driver_lift")
 
+    dashboard_footer()
+
 
 with t_ov:
     pct_lft = n_lft / n_tot * 100 if n_tot else 0
@@ -902,6 +921,8 @@ with t_ov:
         insight("Entry-level employees leave at <b>3× the rate of Senior staff</b>. "
                 "Invest in onboarding, mentoring, and clear promotion pathways "
                 "to retain early-career talent.")
+
+    dashboard_footer()
 
 
 
@@ -1100,6 +1121,8 @@ with t_dx:
                 "almost 13 percentage points above Excellent reputation companies. "
                 "Invest in employer branding, leadership transparency, and employee voice programmes.")
 
+    dashboard_footer()
+
 
 # ════════════════════════════════════════════════════════════════════════════
 #  TAB 3 — DEMOGRAPHIC
@@ -1260,6 +1283,8 @@ with t_dm:
         cw(fig, "dm_agebox")
         insight("Leavers skew <b>younger than stayers</b> across almost every job role. "
                 "The 18–30 window is where HR has the most leverage to intervene.")
+
+    dashboard_footer()
 
 
 # ════════════════════════════════════════════════════════════════════════════
@@ -1455,6 +1480,8 @@ with t_fi:
         insight("Employees with <b>both innovation and leadership opportunities earn the most</b>. "
                 "These employees also have lower attrition — reinforcing that "
                 "growth opportunities and compensation work as a combined retention package.")
+
+    dashboard_footer()
 
 
 # ════════════════════════════════════════════════════════════════════════════
@@ -1778,19 +1805,4 @@ with t_sg:
         </div>
         """, unsafe_allow_html=True)
 
-    # Footer
-    st.markdown("<br>", unsafe_allow_html=True)
-    st.markdown(f"""
-    <div style="background:linear-gradient(135deg,{BRAND_DARK} 0%,{BRAND} 100%);
-                border-radius:14px;padding:18px 28px;text-align:center;
-                box-shadow:0 4px 22px rgba(45,59,224,.2);">
-        <div style="width:54px;height:54px;background:#fff;border-radius:9px;
-                    display:flex;align-items:center;justify-content:center;
-                    margin:0 auto 10px;box-shadow:0 5px 15px rgba(0,0,0,.14);">
-            {logo(40)}
-        </div>
-        <div style="font-size:.67rem;color:rgba(255,255,255,.50);letter-spacing:.10em;text-transform:uppercase;">
-            Kayfa HR Analytics Platform · Employee Attrition Intelligence Report · Week #1 Task · 2024
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+    dashboard_footer()
