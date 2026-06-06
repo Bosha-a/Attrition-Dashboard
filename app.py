@@ -315,6 +315,9 @@ button[aria-label*="sidebar" i] {{
     color: #fff !important;
     box-shadow: 0 3px 10px rgba(45,59,224,.28);
 }}
+.stTabs [data-baseweb="tab-highlight"] {{
+    background-color: {BRAND} !important;
+}}
 
 /* ─────────────── LEGEND DOT ─────────────── */
 .ldot {{ display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:5px; vertical-align:middle; }}
@@ -673,7 +676,7 @@ with t_ans:
         with k3:
             st.markdown(kpi("P", "Highest Risk Profile", pct(risk_rate) if pd.notna(risk_rate) else "N/A", f"{count_fmt(risk_count)} employees"), unsafe_allow_html=True)
         with k4:
-            st.markdown(kpi("M", "Best Next Fix", str(top_action["Driver"]), f"+{top_action['Lift']:.1f} pts over baseline"), unsafe_allow_html=True)
+            st.markdown(kpi("M", "Best Next Fix", str(top_action["Driver"]).replace(" employees", ""), f"+{top_action['Lift']:.1f} pts over baseline"), unsafe_allow_html=True)
 
         st.markdown("<br>", unsafe_allow_html=True)
         c1, c2 = st.columns(2)
@@ -1464,7 +1467,11 @@ with t_sg:
                 border-radius:18px;padding:26px 32px;margin-bottom:1.4rem;
                 display:flex;align-items:center;gap:20px;
                 box-shadow:0 8px 32px rgba(45,59,224,.28);">
-        {logo(64)}
+        <div style="width:76px;height:76px;background:#fff;border-radius:10px;
+                    display:flex;align-items:center;justify-content:center;
+                    box-shadow:0 6px 18px rgba(0,0,0,.14);">
+            {logo(64)}
+        </div>
         <div>
             <div style="font-size:1.25rem;font-weight:800;color:#fff;line-height:1.2;">
                 Data-Driven Retention Recommendations
@@ -1777,7 +1784,11 @@ with t_sg:
     <div style="background:linear-gradient(135deg,{BRAND_DARK} 0%,{BRAND} 100%);
                 border-radius:14px;padding:18px 28px;text-align:center;
                 box-shadow:0 4px 22px rgba(45,59,224,.2);">
-        <div style="display:flex;justify-content:center;margin-bottom:8px;">{logo(40)}</div>
+        <div style="width:54px;height:54px;background:#fff;border-radius:9px;
+                    display:flex;align-items:center;justify-content:center;
+                    margin:0 auto 10px;box-shadow:0 5px 15px rgba(0,0,0,.14);">
+            {logo(40)}
+        </div>
         <div style="font-size:.67rem;color:rgba(255,255,255,.50);letter-spacing:.10em;text-transform:uppercase;">
             Kayfa HR Analytics Platform · Employee Attrition Intelligence Report · Week #1 Task · 2024
         </div>
