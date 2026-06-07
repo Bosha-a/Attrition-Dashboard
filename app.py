@@ -190,9 +190,9 @@ button[aria-label*="sidebar" i] {{
 }}
 .hero-kicker {{
     color: rgba(255,255,255,.68);
-    font-size: .8rem;
+    font-size: 1.0rem;
     font-weight: 800;
-    letter-spacing: .38em;
+    letter-spacing: .20em;
     text-transform: uppercase;
     margin-top: 32px;
 }}
@@ -437,7 +437,7 @@ def dashboard_footer():
         <div style="width:54px;height:54px;background:#fff;border-radius:9px;
                     display:flex;align-items:center;justify-content:center;
                     margin:0 auto 10px;box-shadow:0 5px 15px rgba(0,0,0,.14);">
-            {logo(40)}
+            {logo(75)}
         </div>
         <div style="font-size:.67rem;color:rgba(255,255,255,.50);letter-spacing:.10em;text-transform:uppercase;">
             Employee Attrition Intelligence Report · Week #1 Task · 2026
@@ -543,7 +543,7 @@ with st.sidebar:
     # Logo card
     st.markdown(f"""
     <div class="sb-logo-card">
-        {logo(150)}
+        {logo(200)}
     </div>
     """, unsafe_allow_html=True)
 
